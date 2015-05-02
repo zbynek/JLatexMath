@@ -96,6 +96,10 @@ public abstract class Atom implements Cloneable {
     }
     
     public Box getBox() {
+    	if(usedBox == null){
+    		System.out.println(getClass());
+    		return new VerticalBox();
+    	}
         return usedBox;
     }
     

@@ -131,7 +131,6 @@ public class TeXFormula {
 
     protected Map<String, String> jlmXMLMap;
     private TeXParser parser;
-    public TreeEditor treEd = new TreeEditor();
 
     static {
         // character-to-symbol and character-to-delimiter mappings
@@ -848,26 +847,6 @@ public class TeXFormula {
         } else {
             return new TeXFormula(formula);
         }
-    }
-    
-    public void formulaEditedKeyTyped(char c)
-    {
-    	treEd.keyTyped(this, root, c);
-    }
-    
-    public void formulaEditedKeyPressed(int keyCode, KeyEvent event)
-    {
-    	treEd.keyPressed(this, keyCode, event);
-    }
-    
-    public void formulaClicked(double x, double y, TeXEnvironment te)
-    {
-    	treEd.formulaClicked(x, y, te);
-    }
-    
-    public void initFormula()
-    {
-    	treEd.initFormula(this);
     }
     
     public Atom getRoot()

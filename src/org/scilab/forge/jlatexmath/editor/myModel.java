@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import org.scilab.forge.jlatexmath.Atom;
 import org.scilab.forge.jlatexmath.TeXEnvironment;
 import org.scilab.forge.jlatexmath.TeXFormula;
+import org.scilab.forge.jlatexmath.TreeEditor;
 
 public class myModel extends java.util.Observable
 {
 	TeXFormula formula = null;
+	TreeEditor editor = null;
 	String latex = null;
 	ArrayList<Atom> rootSel = null; 
 	
@@ -17,14 +19,15 @@ public class myModel extends java.util.Observable
 	{
 		latex = "x";
 		formula = new TeXFormula(latex);
+		editor = new TreeEditor();
 		rootSel = new ArrayList<Atom>();
 	}
 	
 	public void keyTyped(char c)
 	{
-		formula.formulaEditedKeyTyped(c);
+		editor.keyTyped(formula,formula.getRoot(),c);
 		Atom root = formula.getRoot();
-		Atom selAtom = formula.treEd.getSelAtm();
+		Atom selAtom = editor.getSelAtm();
 		if(rootSel != null)
 			rootSel.clear();
 		rootSel.add(root);
@@ -35,9 +38,9 @@ public class myModel extends java.util.Observable
 	
 	public void keyPressed(KeyEvent e)
 	{
-		formula.formulaEditedKeyPressed(e.getKeyCode(), e);
+		editor.keyPressed(formula,e.getKeyCode(), e);
 		Atom root = formula.getRoot();
-		Atom selAtom = formula.treEd.getSelAtm();
+		Atom selAtom = editor.getSelAtm();
 		if(rootSel != null)
 			rootSel.clear();
 		rootSel.add(root);
@@ -48,9 +51,9 @@ public class myModel extends java.util.Observable
 	
 	public void formulaClicked(double x, double y, TeXEnvironment te)
 	{
-		formula.formulaClicked(x, y, te);
+		editor.formulaClicked(x, y, te);
 		Atom root = formula.getRoot();
-		Atom selAtom = formula.treEd.getSelAtm();
+		Atom selAtom = editor.getSelAtm();
 		if(rootSel != null)
 			rootSel.clear();
 		rootSel.add(root);
@@ -61,7 +64,7 @@ public class myModel extends java.util.Observable
 	
 	public void init()
 	{
-		formula.initFormula();
+		editor.initFormula(formula);
 		Atom root = formula.getRoot();
 		Atom selAtom = formula.getRoot();
 		if(rootSel != null)

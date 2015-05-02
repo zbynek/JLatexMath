@@ -46,7 +46,7 @@ public class faltu
 			public void keyTyped(KeyEvent e) 
 			{
 				char c = e.getKeyChar();
-				formula.formulaEditedKeyTyped(c);
+				//formula.formulaEditedKeyTyped(c);
 				icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 50);
 				icon.setInsets(new Insets(5, 5, 5, 5));
 
@@ -65,7 +65,7 @@ public class faltu
 
 			public void keyPressed(KeyEvent e) 
 			{
-				formula.formulaEditedKeyPressed(e.getKeyCode(), e);
+				//formula.formulaEditedKeyPressed(e.getKeyCode(), e);
 				if(e.getKeyCode() == 8)
 				{
 					icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 50);
