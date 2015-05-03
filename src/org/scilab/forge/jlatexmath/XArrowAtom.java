@@ -102,20 +102,6 @@ public class XArrowAtom extends Atom {
 		return null;
 	}
 
-	@Override
-	public void setNextSibling(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	@Override
-	public void setPrevSibling(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 
 	@Override
 	public void setSubExpr(Atom at) {

@@ -146,18 +146,13 @@ public class NthRoot extends Atom {
     	{
     		this.setSubExpr(base);
     		base.setParent(this);
-    		base.setNextSibling(this);
-    		base.setPrevSibling(this);
     	}
     	else
     	{
     		this.setSubExpr(root);
     		base.setParent(root);
-    		base.setPrevSibling(root);
-    		base.setNextSibling(this);
     		root.setParent(this);
-    		root.setPrevSibling(this);
-    		root.setNextSibling(base);
+    		
     	}
     }
 
@@ -191,40 +186,33 @@ public class NthRoot extends Atom {
 		return this.parent;
 	}
 
-	@Override
-	public void setNextSibling(Atom at) 
-	{
-		this.nextSibling = at;
-	}
+	
 
 	@Override
 	public Atom getNextSibling(Atom at) 
 	{
 		if(at == root){
-			return base;
+			return base.getNextSibling(base);
 		}
 		if(at == base){
-			return this;
+			return getTreeParent() == null ? this : getTreeParent().getNextSibling(this);
 		}
-		return super.getPrevSibling(at);
+		
+		return root == null ? base.getNextSibling(null) : root.getNextSibling(null);
 	}
 
-	@Override
-	public void setPrevSibling(Atom at)
-	{
-		
-	}
+
 
 	@Override
 	public Atom getPrevSibling(Atom at)
 	{
-		if(at == root){
-			return this;
+		if(at == root || (at == base && root == null)){
+			return getParent() == null ? this : getParent().getPrevSibling(this);
 		}
 		if(at == base){
-			return root == null ? this : root;
+			return root.getPrevSibling(null);
 		}
-		return super.getPrevSibling(at);
+		return base.getPrevSibling(null);
 	}
 
 	@Override

@@ -40,8 +40,6 @@ public class FractionAtom extends Atom {
 	ArrayList<Atom> children = new ArrayList<Atom>();
 	
 	private Atom parent = null;
-	private Atom nextSibling = null;
-	private Atom prevSibling = null;
 	private Atom subExpr = null;
 	
     // whether the default thickness should not be used for the fraction line
@@ -299,33 +297,32 @@ public class FractionAtom extends Atom {
     {
     	this.setSubExpr(numerator);
     	numerator.setParent(this);
-    	numerator.setNextSibling(denominator);
-    	numerator.setPrevSibling(this);
     	denominator.setParent(numerator);
-    	denominator.setNextSibling(this);
-    	denominator.setPrevSibling(numerator);
     	if(numerator instanceof CharAtom || numerator instanceof SymbolAtom)
     		numerator.setSubExpr(denominator);
     }
     
     public Atom getNextSibling(Atom at){
     	if(at == numerator){
-    		return denominator;
+    		return denominator.getNextSibling(null);
     	}
     	if(at == denominator){
-    		return this;
+    		System.out.println("prev"+at);
+    		return getTreeParent() == null ? this : getTreeParent().getNextSibling(this);
     	}
-    	return super.getNextSibling(at);
+    	return numerator.getNextSibling(null);
     }
     
     public Atom getPrevSibling(Atom at){
+    	
     	if(at == numerator){
-    		return this;
+    		return getTreeParent() == null ? this : getTreeParent().getPrevSibling(this);
     	}
     	if(at == denominator){
-    		return numerator;
+    		return numerator.getPrevSibling(null);
     	}
-    	return super.getPrevSibling(at);
+    	return denominator.getPrevSibling(null); 
+    	
     }
     
 	@Override
@@ -359,17 +356,6 @@ public class FractionAtom extends Atom {
 		return this.parent;
 	}
 
-	@Override
-	public void setNextSibling(Atom at)
-	{
-		this.nextSibling = at;
-	}
-
-	@Override
-	public void setPrevSibling(Atom at)
-	{
-		this.prevSibling = at;
-	}
 
 	@Override
 	public void setSubExpr(Atom at)

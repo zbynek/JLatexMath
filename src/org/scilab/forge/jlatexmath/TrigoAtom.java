@@ -50,23 +50,21 @@ public class TrigoAtom extends Atom
 	public void setArrowRelation()
 	{
 		this.setSubExpr(fenced);
-		fenced.setNextSibling(this);
-		fenced.setPrevSibling(this);
 		fenced.setParent(this);
 	}
 	
 	public Atom getNextSibling(Atom at){
 		if(at == fenced){
-			return this;
+			return getTreeParent() == null ? this : getTreeParent().getNextSibling(this);
 		}
-		return super.getNextSibling(at);
+		return fenced.getNextSibling(null);
 	}
 	
 	public Atom getPrevSibling(Atom at){
 		if(at == fenced){
-			return this;
+			return getTreeParent() == null ? this : getTreeParent().getPrevSibling(this);
 		}
-		return super.getPrevSibling(at);
+		return fenced.getPrevSibling(null);
 	}
 	
 	@Override
@@ -97,19 +95,6 @@ public class TrigoAtom extends Atom
 	public Atom getParent()
 	{
 		return this.parent;
-	}
-
-	@Override
-	public void setNextSibling(Atom at) 
-	{
-		this.nextSibling = at;
-	}
-
-
-	@Override
-	public void setPrevSibling(Atom at) 
-	{
-		this.prevSibling = at;
 	}
 
 	@Override

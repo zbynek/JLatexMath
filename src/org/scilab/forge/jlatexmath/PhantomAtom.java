@@ -102,21 +102,6 @@ public class PhantomAtom extends Atom implements Row {
 		return null;
 	}
 
-	@Override
-	public void setNextSibling(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
-	@Override
-	public void setPrevSibling(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 
 	@Override
 	public void setSubExpr(Atom at) {

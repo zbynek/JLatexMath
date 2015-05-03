@@ -49,8 +49,6 @@ public class RowAtom extends Atom implements Row {
 	ArrayList<Atom> children = new ArrayList<Atom>();
 	
 	private Atom parent = null;
-	private Atom nextSibling = null;
-	private Atom prevSibling = null;
 	private Atom subExpr = null;
 
     // atoms to be displayed horizontally next to eachother
@@ -138,7 +136,6 @@ public class RowAtom extends Atom implements Row {
     public Box createBox(TeXEnvironment env) {
     	TreeEditor.addAtoms(this);
     	this.setTreeReltion();
-    	this.setArrowRelation();
         TeXFont tf = env.getTeXFont();
         HorizontalBox hBox = new HorizontalBox(env.getColor(), env.getBackground());
         int position = 0;
@@ -282,47 +279,29 @@ public class RowAtom extends Atom implements Row {
     	}
     }
     
-    public void setArrowRelation()
-    {
-    	Atom at = null;
-    	int j = elements.size();
-    	int i = 0;
-    	if(j != 0)
-    	{
-    		this.setSubExpr(elements.getFirst());
-    		while(i != j)
-    		{
-    			at = elements.get(i);
-    			at.setParent(this);
-    			if(i == 0)
-    				at.setPrevSibling(this);
-    			else
-    				at.setPrevSibling(elements.get(i-1));
-    			if(i == j-1)
-    				at.setNextSibling(this);
-    			else
-    				at.setNextSibling(elements.get(i+1));
-    			++i;
-    		}
-    	}
-    }
     
     public Atom getPrevSibling(Atom at){
+    	if(at == elements.get(0)){
+    		return getTreeParent() == null ? this : getTreeParent().getPrevSibling(this);
+    	}
     	for(int i =1; i< elements.size();i++){
     		if(elements.get(i) == at){
-    			return elements.get(i-1);
+    			return elements.get(i-1).getPrevSibling(null);
     		}
     	}
-    	return super.getPrevSibling(at);
+    	return at == null ? elements.get(elements.size() - 1).getPrevSibling(null) : this;
     }
     
     public Atom getNextSibling(Atom at){
+    	if(at == elements.get(elements.size() - 1)){
+    		return getTreeParent() == null ? this : getTreeParent().getNextSibling(this);
+    	}
     	for(int i =0; i+1< elements.size();i++){
     		if(elements.get(i) == at){
-    			return elements.get(i+1);
+    			return elements.get(i+1).getNextSibling(null);
     		}
     	}
-    	return super.getPrevSibling(at);
+    	return at == null ? elements.get(0).getNextSibling(null) : this;
     }
 
 	@Override
@@ -355,18 +334,6 @@ public class RowAtom extends Atom implements Row {
 		return this.parent;
 	}
 
-	@Override
-	public void setNextSibling(Atom at)
-	{
-		this.nextSibling = at;
-	}
-
-	
-	@Override
-	public void setPrevSibling(Atom at)
-	{
-		this.prevSibling = at;
-	}
 
 	
 

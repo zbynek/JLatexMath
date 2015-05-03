@@ -44,8 +44,6 @@ public class FencedAtom extends Atom {
 	ArrayList<Atom> children = new ArrayList<Atom>();
 	
 	private Atom parent = null;
-	private Atom nextSibling = null;
-	private Atom prevSibling = null;
 	private Atom subExpr = null;
 
     // parameters used in the TeX algorithm
@@ -209,18 +207,6 @@ public class FencedAtom extends Atom {
 	public Atom getParent()
 	{
 		return this.parent;
-	}
-
-	@Override
-	public void setNextSibling(Atom at) 
-	{
-		this.nextSibling = at;
-	}
-
-	@Override
-	public void setPrevSibling(Atom at) 
-	{
-		this.prevSibling = at;
 	}
 
 	@Override

@@ -246,13 +246,10 @@ public class ScriptsAtom extends Atom {
     {
     	this.setSubExpr(superscript);
     	base.setParent(superscript);
-    	base.setNextSibling(superscript);
-    	base.setPrevSibling(this);
+    	
     	if(superscript != null)		
     	{
     		superscript.setParent(this);
-    		superscript.setNextSibling(this);
-    		superscript.setPrevSibling(base);
     		if(superscript instanceof CharAtom || superscript instanceof SymbolAtom)
     			superscript.setSubExpr(base);
     	}
@@ -285,18 +282,6 @@ public class ScriptsAtom extends Atom {
 	@Override
 	public Atom getParent() {
 		return this.parent;
-	}
-
-	@Override
-	public void setNextSibling(Atom at)
-	{
-		this.nextSibling = at;
-	}
-
-	@Override
-	public void setPrevSibling(Atom at) 
-	{
-		this.prevSibling = at;
 	}
 
 	@Override

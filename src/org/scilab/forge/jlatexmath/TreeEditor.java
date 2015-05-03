@@ -66,7 +66,6 @@ public class TreeEditor
 						this.commandWritten(value);
 				}
 		}
-		this.setRootRelations();
 		
 	}
 	
@@ -80,7 +79,10 @@ public class TreeEditor
 		switch(n)
 		{
 		case 37 :
-			if(selAtom.getParent().getPrevSibling(selAtom) != null)
+			if(selAtom.getTreeParent() == null){
+				selAtom = selAtom.getPrevSibling(null);
+			}
+			else if(selAtom.getParent().getPrevSibling(selAtom) != null)
 				selAtom = selAtom.getPrevSibling(selAtom);
 			if(selAtom instanceof FencedAtom)
 			{
@@ -98,8 +100,12 @@ public class TreeEditor
 			 }	
 			 break;
 		case 39 :
-			if(selAtom.getParent().getNextSibling(selAtom) != null)
-				selAtom = selAtom.getParent().getNextSibling(selAtom);
+			if(selAtom.getTreeParent() == null){
+				selAtom = selAtom.getNextSibling(null);
+			}
+			else if(selAtom.getTreeParent().getNextSibling(selAtom) != null){
+				selAtom = selAtom.getTreeParent().getNextSibling(selAtom);
+			}
 			if(selAtom instanceof FencedAtom)
 			{
 				FencedAtom f = (FencedAtom) selAtom;
@@ -247,7 +253,6 @@ public class TreeEditor
 		default :
 			return;
 		}
-		this.setRootRelations();
 	}
 	
 	public void formulaClicked(double x, double y, TeXEnvironment te)
@@ -1760,9 +1765,4 @@ public class TreeEditor
 		this.formula = formula;
 	}
 	
-	public void setRootRelations()
-	{
-		formula.getRoot().setNextSibling(formula.getRoot().getSubExpr());
-		formula.getRoot().setPrevSibling(formula.getRoot().getSubExpr());
-	}
 }

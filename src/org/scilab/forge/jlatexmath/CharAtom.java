@@ -41,8 +41,6 @@ public class CharAtom extends CharSymbol {
 	ArrayList<Atom> children = new ArrayList<Atom>();
 	
 	private Atom parent = null;
-	private Atom nextSibling = null;
-	private Atom prevSibling = null;
 	private Atom subExpr = null;
 
     // alphanumeric character
@@ -139,18 +137,7 @@ public class CharAtom extends CharSymbol {
 		return this.parent;
 	}
 
-	@Override
-	public void setNextSibling(Atom at) 
-	{
-		this.nextSibling = at;
-	}
 
-
-	@Override
-	public void setPrevSibling(Atom at)
-	{
-		this.prevSibling = at;
-	}
 
 
 

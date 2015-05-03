@@ -109,18 +109,6 @@ public class VlineAtom extends Atom {
 	}
 
 	@Override
-	public void setNextSibling(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPrevSibling(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void setSubExpr(Atom at) {
 		// TODO Auto-generated method stub
 		
