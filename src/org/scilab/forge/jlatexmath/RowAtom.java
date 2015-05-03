@@ -306,6 +306,24 @@ public class RowAtom extends Atom implements Row {
     		}
     	}
     }
+    
+    public Atom getPrevSibling(Atom at){
+    	for(int i =1; i< elements.size();i++){
+    		if(elements.get(i) == at){
+    			return elements.get(i-1);
+    		}
+    	}
+    	return super.getPrevSibling(at);
+    }
+    
+    public Atom getNextSibling(Atom at){
+    	for(int i =0; i+1< elements.size();i++){
+    		if(elements.get(i) == at){
+    			return elements.get(i+1);
+    		}
+    	}
+    	return super.getPrevSibling(at);
+    }
 
 	@Override
 	public void setTreeParent(Atom at) 
@@ -343,23 +361,14 @@ public class RowAtom extends Atom implements Row {
 		this.nextSibling = at;
 	}
 
-	@Override
-	public Atom getNextSibling() 
-	{
-		return this.nextSibling;
-	}
-
+	
 	@Override
 	public void setPrevSibling(Atom at)
 	{
 		this.prevSibling = at;
 	}
 
-	@Override
-	public Atom getPrevSibling()
-	{
-		return this.prevSibling;
-	}
+	
 
 	@Override
 	public void setSubExpr(Atom at)

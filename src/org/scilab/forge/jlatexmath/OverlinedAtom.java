@@ -93,11 +93,7 @@ public void setNextSibling(Atom at) {
 	
 }
 
-@Override
-public Atom getNextSibling() {
-	// TODO Auto-generated method stub
-	return null;
-}
+
 
 @Override
 public void setPrevSibling(Atom at) {
@@ -105,11 +101,6 @@ public void setPrevSibling(Atom at) {
 	
 }
 
-@Override
-public Atom getPrevSibling() {
-	// TODO Auto-generated method stub
-	return null;
-}
 
 @Override
 public void setSubExpr(Atom at) {

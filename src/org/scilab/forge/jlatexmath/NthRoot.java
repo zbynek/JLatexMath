@@ -198,21 +198,33 @@ public class NthRoot extends Atom {
 	}
 
 	@Override
-	public Atom getNextSibling() 
+	public Atom getNextSibling(Atom at) 
 	{
-		return this.nextSibling;
+		if(at == root){
+			return base;
+		}
+		if(at == base){
+			return this;
+		}
+		return super.getPrevSibling(at);
 	}
 
 	@Override
 	public void setPrevSibling(Atom at)
 	{
-		this.prevSibling = at;
+		
 	}
 
 	@Override
-	public Atom getPrevSibling()
+	public Atom getPrevSibling(Atom at)
 	{
-		return this.prevSibling;
+		if(at == root){
+			return this;
+		}
+		if(at == base){
+			return root == null ? this : root;
+		}
+		return super.getPrevSibling(at);
 	}
 
 	@Override

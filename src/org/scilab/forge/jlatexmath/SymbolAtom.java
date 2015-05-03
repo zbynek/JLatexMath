@@ -241,11 +241,6 @@ public class SymbolAtom extends CharSymbol {
 		this.nextSibling = at;
 	}
 
-	@Override
-	public Atom getNextSibling()
-	{
-		return this.nextSibling;
-	}
 
 	@Override
 	public void setPrevSibling(Atom at)
@@ -253,12 +248,7 @@ public class SymbolAtom extends CharSymbol {
 		this.prevSibling = at;
 	}
 
-	@Override
-	public Atom getPrevSibling() 
-	{
-		return this.prevSibling;
-	}
-
+	
 	@Override
 	public void setSubExpr(Atom at)
 	{

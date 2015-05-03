@@ -80,8 +80,8 @@ public class TreeEditor
 		switch(n)
 		{
 		case 37 :
-			if(selAtom.getPrevSibling() != null)
-				selAtom = selAtom.getPrevSibling();
+			if(selAtom.getParent().getPrevSibling(selAtom) != null)
+				selAtom = selAtom.getPrevSibling(selAtom);
 			if(selAtom instanceof FencedAtom)
 			{
 				FencedAtom f = (FencedAtom) selAtom;
@@ -98,8 +98,8 @@ public class TreeEditor
 			 }	
 			 break;
 		case 39 :
-			if(selAtom.getNextSibling() != null)
-				selAtom = selAtom.getNextSibling();
+			if(selAtom.getParent().getNextSibling(selAtom) != null)
+				selAtom = selAtom.getParent().getNextSibling(selAtom);
 			if(selAtom instanceof FencedAtom)
 			{
 				FencedAtom f = (FencedAtom) selAtom;

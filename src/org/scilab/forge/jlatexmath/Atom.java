@@ -125,9 +125,14 @@ public abstract class Atom implements Cloneable {
     public abstract void setParent(Atom at);
     public abstract Atom getParent();
     public abstract void setNextSibling(Atom at);
-    public abstract Atom getNextSibling();
+    public Atom getNextSibling(Atom at){
+    	return getParent() == null ? null : getParent().getNextSibling(this);
+    }
     public abstract void setPrevSibling(Atom at);
-    public abstract Atom getPrevSibling();
+    
+    public Atom getPrevSibling(Atom at){
+    	return getParent() == null ? null : getParent().getPrevSibling(this);
+    }
     public abstract void setSubExpr(Atom at);
     public abstract Atom getSubExpr();
 }

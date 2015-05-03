@@ -308,6 +308,26 @@ public class FractionAtom extends Atom {
     		numerator.setSubExpr(denominator);
     }
     
+    public Atom getNextSibling(Atom at){
+    	if(at == numerator){
+    		return denominator;
+    	}
+    	if(at == denominator){
+    		return this;
+    	}
+    	return super.getNextSibling(at);
+    }
+    
+    public Atom getPrevSibling(Atom at){
+    	if(at == numerator){
+    		return this;
+    	}
+    	if(at == denominator){
+    		return numerator;
+    	}
+    	return super.getPrevSibling(at);
+    }
+    
 	@Override
 	public void setTreeParent(Atom at) 
 	{
@@ -346,21 +366,9 @@ public class FractionAtom extends Atom {
 	}
 
 	@Override
-	public Atom getNextSibling() 
-	{
-		return this.nextSibling;
-	}
-
-	@Override
 	public void setPrevSibling(Atom at)
 	{
 		this.prevSibling = at;
-	}
-
-	@Override
-	public Atom getPrevSibling()
-	{
-		return this.prevSibling;
 	}
 
 	@Override

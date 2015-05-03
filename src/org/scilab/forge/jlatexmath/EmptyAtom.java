@@ -106,22 +106,11 @@ public class EmptyAtom extends Atom {
 		this.nextSibling = at;
 	}
 
-	@Override
-	public Atom getNextSibling()
-	{
-		return this.nextSibling;
-	}
 
 	@Override
 	public void setPrevSibling(Atom at) 
 	{
 		this.prevSibling = at;
-	}
-
-	@Override
-	public Atom getPrevSibling()
-	{
-		return this.prevSibling;
 	}
 
 	@Override

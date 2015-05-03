@@ -553,23 +553,12 @@ public class MatrixAtom extends Atom {
 	}
 
 	@Override
-	public Atom getNextSibling() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void setPrevSibling(Atom at) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public Atom getPrevSibling() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public void setSubExpr(Atom at) {
 		// TODO Auto-generated method stub
