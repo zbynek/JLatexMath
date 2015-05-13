@@ -46,46 +46,4 @@ public class BigDelimiterAtom extends Atom {
 	b.setShift(-(b.getHeight() + b.getDepth()) / 2 - env.getTeXFont().getAxisHeight(env.getStyle()));
 	return b;
     }
-
-	@Override
-	public void setTreeParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getTreeParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setChildren(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setSubExpr(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getSubExpr() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -72,7 +72,6 @@ public class ScriptsAtom extends Atom {
     public Box createBox(TeXEnvironment env) {
     	TreeEditor.addAtoms(this);
     	this.setTreeRelations();
-    	this.setArrowRelations();
 	Box b = (base == null ? new StrutBox(0, 0, 0, 0) : base.createBox(env));
         Box deltaSymbol = new StrutBox(0, 0, 0, 0);
 	if (subscript == null && superscript == null)
@@ -242,59 +241,6 @@ public class ScriptsAtom extends Atom {
     		superscript.setTreeParent(this);
     }
 
-    public void setArrowRelations()
-    {
-    	this.setSubExpr(superscript);
-    	base.setParent(superscript);
-    	
-    	if(superscript != null)		
-    	{
-    		superscript.setParent(this);
-    		if(superscript instanceof CharAtom || superscript instanceof SymbolAtom)
-    			superscript.setSubExpr(base);
-    	}
-    }
-    
-	@Override
-	public void setTreeParent(Atom at)
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent() 
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at)
-	{
-		
-	}
-
-	@Override
-	public void setParent(Atom at) 
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent() {
-		return this.parent;
-	}
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr() 
-	{
-		return this.subExpr;
-	}
 	
 	public Atom getBase()
 	{

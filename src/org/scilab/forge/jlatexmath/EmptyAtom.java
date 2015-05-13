@@ -43,8 +43,6 @@ public class EmptyAtom extends Atom {
 	private Atom treeParent = null;
 	ArrayList<Atom> children = new ArrayList<Atom>();
 	
-	private Atom parent = null;
-	private Atom subExpr = null;
 
     public EmptyAtom() { 
     	height = 0;
@@ -68,47 +66,4 @@ public class EmptyAtom extends Atom {
     	return usedBox;
     }
 
-	@Override
-	public void setTreeParent(Atom at) 
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent()
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at)
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
-
-
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr() 
-	{
-		return this.subExpr;
-	} 
 }

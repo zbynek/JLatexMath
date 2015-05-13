@@ -45,46 +45,4 @@ public class GeoGebraLogoAtom extends Atom {
 	CharBox o = new CharBox(env.getTeXFont().getDefaultChar('o', env.getStyle()));
 	return new GeoGebraLogoBox(o.width, o.height);
     }
-
-	@Override
-	public void setTreeParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getTreeParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setChildren(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setSubExpr(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getSubExpr() {
-		// TODO Auto-generated method stub
-		return null;
-	} 
 }

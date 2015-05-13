@@ -26,7 +26,6 @@ public class TrigoAtom extends Atom
 	{
 		TreeEditor.addAtoms(this);
 		this.setTreeRelation();
-		this.setArrowRelation();
 		Box a = typed.createBox(env);
 		Box b = fenced.createBox(env);
 		HorizontalBox hBox = new HorizontalBox(env.getColor(), env.getBackground());
@@ -47,11 +46,7 @@ public class TrigoAtom extends Atom
 		children.add(fenced);
 	}
 	
-	public void setArrowRelation()
-	{
-		this.setSubExpr(fenced);
-		fenced.setParent(this);
-	}
+	
 	
 	public Atom getNextSibling(Atom at){
 		if(at == fenced){
@@ -67,46 +62,6 @@ public class TrigoAtom extends Atom
 		return fenced.getPrevSibling(null);
 	}
 	
-	@Override
-	public void setTreeParent(Atom at)
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent()
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at) 
-	{
-		
-	}
-
-	@Override
-	public void setParent(Atom at) 
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr() 
-	{
-		return this.subExpr;
-	}
+	
 
 }

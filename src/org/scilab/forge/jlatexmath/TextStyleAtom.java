@@ -48,47 +48,4 @@ public class TextStyleAtom extends Atom {
 	env.setTextStyle(prevStyle);
 	return box;
     }
-
-	@Override
-	public void setTreeParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getTreeParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setChildren(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public void setSubExpr(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getSubExpr() {
-		// TODO Auto-generated method stub
-		return null;
-	} 
 }

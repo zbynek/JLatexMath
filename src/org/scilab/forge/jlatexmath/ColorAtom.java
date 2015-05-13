@@ -260,47 +260,4 @@ public class ColorAtom extends Atom implements Row {
         final float kk = 1 - k;
         return new Color(kk * (1 - c), kk * (1 - m), kk * (1 - y));
     }
-
-	@Override
-	public void setTreeParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getTreeParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setChildren(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getParent() {
-		// TODO Auto-generated method stub
-		return null;
-
-	}
-
-	@Override
-	public void setSubExpr(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Atom getSubExpr() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

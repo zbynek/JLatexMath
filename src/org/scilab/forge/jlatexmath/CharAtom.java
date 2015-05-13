@@ -37,12 +37,6 @@ import java.util.ArrayList;
  */
 public class CharAtom extends CharSymbol {
 	
-	private Atom treeParent = null;
-	ArrayList<Atom> children = new ArrayList<Atom>();
-	
-	private Atom parent = null;
-	private Atom subExpr = null;
-
     // alphanumeric character
     private final char c;
     
@@ -107,49 +101,5 @@ public class CharAtom extends CharSymbol {
 	return getChar(tf, TeXConstants.STYLE_DISPLAY, false).getCharFont();
     }
 
-	@Override
-	public void setTreeParent(Atom at) 
-	{
-		this.treeParent = at;
-	}
 
-	@Override
-	public Atom getTreeParent()
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at)
-	{
-		
-	}
-
-	@Override
-	public void setParent(Atom at) 
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
-
-
-
-
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr()
-	{
-		return this.subExpr;
-	}
 }

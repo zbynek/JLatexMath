@@ -62,7 +62,6 @@ public class NthRoot extends Atom {
     public Box createBox(TeXEnvironment env) {
     	TreeEditor.addAtoms(this);
     	this.setTreeRelation();
-    	this.setArrowRelation();
 	// first create a simple square root construction
 	
 	TeXFont tf = env.getTeXFont();
@@ -139,52 +138,8 @@ public class NthRoot extends Atom {
     		root.setTreeParent(this);
     	}
     }
-    
-    public void setArrowRelation()
-    {
-    	if(root == null)
-    	{
-    		this.setSubExpr(base);
-    		base.setParent(this);
-    	}
-    	else
-    	{
-    		this.setSubExpr(root);
-    		base.setParent(root);
-    		root.setParent(this);
-    		
-    	}
-    }
 
-	@Override
-	public void setTreeParent(Atom at) 
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent() 
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at)
-	{
-
-	}
-
-	@Override
-	public void setParent(Atom at)
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
+	
 
 	
 
@@ -207,7 +162,7 @@ public class NthRoot extends Atom {
 	public Atom getPrevSibling(Atom at)
 	{
 		if(at == root || (at == base && root == null)){
-			return getParent() == null ? this : getParent().getPrevSibling(this);
+			return getTreeParent() == null ? this : getTreeParent().getPrevSibling(this);
 		}
 		if(at == base){
 			return root.getPrevSibling(null);
@@ -215,17 +170,7 @@ public class NthRoot extends Atom {
 		return base.getPrevSibling(null);
 	}
 
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
 
-	@Override
-	public Atom getSubExpr()
-	{
-		return this.subExpr;
-	}
 	
 	public Atom getBase()
 	{

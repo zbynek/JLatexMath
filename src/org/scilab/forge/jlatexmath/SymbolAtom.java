@@ -43,12 +43,6 @@ import java.io.InputStream;
  */
 public class SymbolAtom extends CharSymbol {
 	
-	private Atom treeParent = null;
-	ArrayList<Atom> children = new ArrayList<Atom>();
-	
-	private Atom parent = null;
-	private Atom subExpr = null;
-    
     // whether it's is a delimiter symbol
     private final boolean delimiter;
     
@@ -203,45 +197,5 @@ public class SymbolAtom extends CharSymbol {
         return tf.getChar(name, TeXConstants.STYLE_DISPLAY).getCharFont();
     }
 
-	@Override
-	public void setTreeParent(Atom at) 
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent()
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at)
-	{
-	this.parent = at;	
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr()
-	{
-		return this.subExpr;
-	}
+	
 }

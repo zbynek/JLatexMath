@@ -40,12 +40,6 @@ import java.util.List;
  */
 public class FencedAtom extends Atom {
 	
-	private Atom treeParent = null;
-	ArrayList<Atom> children = new ArrayList<Atom>();
-	
-	private Atom parent = null;
-	private Atom subExpr = null;
-
     // parameters used in the TeX algorithm
     private static final int DELIMITER_FACTOR = 901;
 
@@ -165,61 +159,16 @@ public class FencedAtom extends Atom {
 
     public void setTreeRelation()
     {
-    	base.setTreeParent(this);
-    	if(children != null)
-    		children.clear();
-    	children.add(base);
+    	base.setTreeParent(this);    	
     }
     
     public void setArrowRelation()
     {
-    	this.setSubExpr(base);
+    	//this.setSubExpr(base);
     	//base.setNextSibling(this.getNextSibling());
     	//base.setPrevSibling(this.getPrevSibling());
-    	base.setParent(this.getParent());
+    	//base.setParent(this.getParent());
     }
-    
-	@Override
-	public void setTreeParent(Atom at)
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent()
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at) 
-	{
-		
-	}
-
-	@Override
-	public void setParent(Atom at) 
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr() 
-	{
-		return this.subExpr;
-	}
 
 	public void setBase(Atom at)
 	{

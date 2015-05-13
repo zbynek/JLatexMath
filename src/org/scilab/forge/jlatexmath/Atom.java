@@ -59,6 +59,8 @@ public abstract class Atom implements Cloneable {
     public int alignment = -1;
     
     protected Box usedBox;
+
+	private Atom treeParent;
     
     /**
      * Convert this atom into a {@link Box}, using properties set by "parent"
@@ -115,15 +117,19 @@ public abstract class Atom implements Cloneable {
      * A tree that should be maintained (which is very much similar to MathML) to turn 
      * JLaTeXMath into WYSIWYG
      */
-    public abstract void setTreeParent(Atom at);
-    public abstract Atom getTreeParent();
-    public abstract void setChildren(Atom at);
+	public final void setTreeParent(Atom at) 
+	{
+		this.treeParent = at;
+	}
+
+	public final Atom getTreeParent()
+	{
+		return this.treeParent;
+	}
     
     /**
      * Keeps record, for which Atom to move on if user presses an Arrow key
      */
-    public abstract void setParent(Atom at);
-    public abstract Atom getParent();
     public Atom getNextSibling(Atom at){
     	if(at == null){
     		return this;
@@ -137,6 +143,4 @@ public abstract class Atom implements Cloneable {
     	}
     	return getTreeParent() == null ? this : getTreeParent().getPrevSibling(this);
     }
-    public abstract void setSubExpr(Atom at);
-    public abstract Atom getSubExpr();
 }

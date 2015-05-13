@@ -36,11 +36,6 @@ import java.util.ArrayList;
  */
 public class FractionAtom extends Atom {
     
-	private Atom treeParent = null;
-	ArrayList<Atom> children = new ArrayList<Atom>();
-	
-	private Atom parent = null;
-	private Atom subExpr = null;
 	
     // whether the default thickness should not be used for the fraction line
     private boolean noDefault = false;
@@ -186,7 +181,6 @@ public class FractionAtom extends Atom {
     public Box createBox(TeXEnvironment env) {
     	TreeEditor.addAtoms(this);
     	this.setTreeRelation();
-    	this.setArrowRelation();
         TeXFont tf = env.getTeXFont();
         int style = env.getStyle();
         // set thickness to default if default value should be used
@@ -285,22 +279,10 @@ public class FractionAtom extends Atom {
 
     public void setTreeRelation()
     {
-    	if(children != null)
-    		children.clear();
-    	children.add(numerator);
-    	children.add(denominator);
     	numerator.setTreeParent(this);
     	denominator.setTreeParent(this);
     }
     
-    public void setArrowRelation()
-    {
-    	this.setSubExpr(numerator);
-    	numerator.setParent(this);
-    	denominator.setParent(numerator);
-    	if(numerator instanceof CharAtom || numerator instanceof SymbolAtom)
-    		numerator.setSubExpr(denominator);
-    }
     
     public Atom getNextSibling(Atom at){
     	if(at == numerator){
@@ -324,50 +306,6 @@ public class FractionAtom extends Atom {
     	return denominator.getPrevSibling(null); 
     	
     }
-    
-	@Override
-	public void setTreeParent(Atom at) 
-	{
-		this.treeParent = at;
-	}
-
-	@Override
-	public Atom getTreeParent()
-	{
-		return this.treeParent;
-	}
-
-	@Override
-	public void setChildren(Atom at)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setParent(Atom at)
-	{
-		this.parent = at;
-	}
-
-	@Override
-	public Atom getParent()
-	{
-		return this.parent;
-	}
-
-
-	@Override
-	public void setSubExpr(Atom at)
-	{
-		this.subExpr = at;
-	}
-
-	@Override
-	public Atom getSubExpr() 
-	{
-		return this.subExpr;
-	}
 	
 	public Atom getNum()
 	{
